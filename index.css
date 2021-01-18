@@ -1,0 +1,41 @@
+#result {
+  height: 200px;
+  width: 200px;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.radio-container, #radioRow{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.radio1 > h3 {
+  text-align: center;
+  color: red;
+}
+.radioLabel {
+  color: darkblue;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+#radioRow1 > label {
+  color: darkgreen;
+  font-weight: bold;
+  font-size: 1.3rem;
+  padding-left: 1rem;
+}
+#radioRow2 > label, #radioRow3 > label {
+  color: darkred;
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding-left: 1rem;
+}
+#radioRow1, #radioRow2, #radioRow3 {
+  margin-top: 2rem;
+  align-self: center;
+}
