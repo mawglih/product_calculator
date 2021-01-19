@@ -4,27 +4,21 @@ const radioRow1 = [{label:'Речь не развита по возрасту', 
 const radioRow2 = [{label: 'Бронзовый пакет', value:'m', name: 'row2'}, {label: 'Серебряный пакет', value:'n', name: 'row2'}, {label: 'Золотой пакет', value:'o', name: 'row2'}];
 const radioRow3 = [{label: 'Бронзовый пакет', value:'m', name: 'row3'}, {label: 'Серебряный пакет', value:'n', name: 'row3'}, {label: 'Золотой пакет', value:'o', name: 'row3'},{label: 'Платиновый пакет', name: 'row3', value: 'p'},];
 
-function doMagic() {
+const doMagic = () => {
   const result = document.getElementById('result');
   const resultTitle = document.createElement('h1');
   const resultValue = document.createElement('span');
-  let elem = document.getElementsByTagName('input');
   let sum = '';
-  for(i=0; i<elem.length; i++) {
-    if(elem[i].type='radio') {
-      if(elem[i].checked) {
-        sum += elem[i].value;
-        resultTitle.innerHTML='Вам нужно до хрена прикупить!';
-        resultValue.innerHTML=`[products columns=3 ids="${productIds[sum]}"]`;
-      }
-    }
-  }
+  sum = calculateResult();
+  resultTitle.innerHTML='Вам нужно до хрена прикупить!';
+  resultValue.innerHTML=`[products columns=3 ids="${productIds[sum]}"]`;
   result.appendChild(resultTitle);
   result.appendChild(resultValue);
 }
 
 const getRowCreated = (idParent, idChild, arrayName, calculate, remove, fn, id3, id4, array2) => {
   eraseResult('result');
+  removeChildren(id3, true);
   const childDiv = document.createElement('div');
   childDiv.setAttribute('id', idChild);
   const parentDiv = document.getElementById(idParent);
@@ -41,8 +35,13 @@ const getRowCreated = (idParent, idChild, arrayName, calculate, remove, fn, id3,
     inputValue.value = radioValue.value;
     if(fn) {
       inputValue.addEventListener('click', function() {
-        calculateResult();
-        getRowCreated(id3, id4, array2, true, false);
+        eraseResult('result');
+        let result = calculateResult();
+        if(result == 'be') {
+          getRowCreated(id3, id4, radioRow2, true, false);
+        } else {
+          getRowCreated(id3, id4, array2, true, false);
+        }
       });
     }
     if(calculate) inputValue.onclick = doMagic;
@@ -78,7 +77,7 @@ const calculateResult = () => {
   }
   console.log('sum before return', sum);
   return sum;
-}
+};
 
 function createRadio(id1, id2, array, fn, id3, id4, array2) {
   console.log('executed0');
@@ -88,18 +87,4 @@ function createRadio(id1, id2, array, fn, id3, id4, array2) {
 function createRadio1(id1, id2, arr) {  
   console.log('executed1');
   getRowCreated(id1, id2, arr, true, true);
-};
-
-function createRadio2(id1, id2, array, fn, id3, id4, array2, id5, array3) {
-  console.log('executed2');
-  eraseResult('result');
-  let result = calculateResult();
-  if (result === 'b') {
-    calculateResult();
-    if(result === 'bf'){
-    getRowCreated(id1, id2, array, false, true, fn, id3, id4, array2);
-    } else {
-      getRowCreated(id1, id2, array, false, true, fn, id3, id5, array3);
-    }
-  }
 };
