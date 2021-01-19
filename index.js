@@ -1,6 +1,6 @@
 // start calculator
-const productIds = {am: '77412', bem: '77412', an: '77431', ben: '77431', ao: '77441', beo: '77441', bep: 'no product', bfm: '77428',
-cem: '77428', bfn: '77432', cen: '77432', bfo: '77442', ceo: '77442', bfp: '77445', cep: '77445', cfm: '77429', dem: '77429', cfn: '77433', den: '77433', cfo: '77443', deo: '77443', cfp: '77446', dep: '77446', dfm: '77430', dfn: '77440', dfo: '77444', dfp: '77447'};
+const productIds = {am: 'bronze12', bem: 'bronze12', an: 'silver12', ben: 'silver12', ao: 'gold12', beo: 'gold12', bep: 'no product', bfm: 'bronze23',
+cem: 'bronze23', bfn: 'silver23', cen: 'silver23', bfo: 'gold23', ceo: 'gold23', bfp: 'platinum23', cep: 'platinum23', cfm: 'bronze34', dem: 'bronze34', cfn: 'silver34', den: 'silver34', cfo: 'gold34', deo: 'gold34', cfp: 'platinum34', dep: 'platinum34', dfm: 'bronze46', dfn: 'silver46', dfo: 'gold46', dfp: 'platinum46'};
 const radioRow1 = [{label:'Речь не развита по возрасту', value:'e', name: 'row1'}, {label:'Речь развита по возрасту', value:'f', name:'row1'},];
 const radioRow2 = [{label: 'Бронзовый пакет', value:'m', name: 'row2'}, {label: 'Серебряный пакет', value:'n', name: 'row2'}, {label: 'Золотой пакет', value:'o', name: 'row2'}];
 const radioRow3 = [{label: 'Бронзовый пакет', value:'m', name: 'row3'}, {label: 'Серебряный пакет', value:'n', name: 'row3'}, {label: 'Золотой пакет', value:'o', name: 'row3'},{label: 'Платиновый пакет', name: 'row3', value: 'p'},];
@@ -8,16 +8,20 @@ const radioRow3 = [{label: 'Бронзовый пакет', value:'m', name: 'ro
 const doMagic = () => {
   const result = document.getElementById('result');
   const resultTitle = document.createElement('h1');
-  const resultValue = document.createElement('span');
+  const resultButton = document.createElement('button');
+  const resultLink = document.createElement('a');
   let sum = '';
   console.log('sum cleared2', sum);
   sum = calculateResult();
   console.log('sum after calc', sum);
   console.log('product', productIds[sum])
   resultTitle.innerHTML='Вам нужно до хрена прикупить!';
-  resultValue.innerHTML=`[products columns=3 ids="${productIds[sum]}"]`;
+  resultLink.href = `http://vikaraskina.com/product/${productIds[sum]}/`;
+  resultLink.target = '_blank';
+  resultButton.innerHTML='Посмотреть ваш выбор';
   result.appendChild(resultTitle);
-  result.appendChild(resultValue);
+  result.appendChild(resultLink);
+  resultLink.appendChild(resultButton);
 }
 
 const getRowCreated = (idParent, idChild, arrayName, calculate, remove, fn, id3, id4, array2) => {
