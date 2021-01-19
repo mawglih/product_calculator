@@ -22,7 +22,7 @@ const doMagic = () => {
   result.appendChild(resultTitle);
   result.appendChild(resultLink);
   resultLink.appendChild(resultButton);
-}
+};
 
 const getRowCreated = (idParent, idChild, arrayName, calculate, remove, fn, id3, id4, array2) => {
   eraseResult('result');
