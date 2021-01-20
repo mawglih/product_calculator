@@ -18,6 +18,7 @@ const doMagic = () => {
   resultTitle.innerHTML='Вам нужно до хрена прикупить!';
   resultLink.href = `http://vikaraskina.com/product/${productIds[sum]}/`;
   resultLink.target = '_blank';
+  resultButton.setAttribute('class', 'result-button');
   resultButton.innerHTML='Посмотреть ваш выбор';
   result.appendChild(resultTitle);
   result.appendChild(resultLink);
@@ -29,6 +30,7 @@ const getRowCreated = (idParent, idChild, arrayName, calculate, remove, fn, id3,
   removeChildren(id3, true);
   const childDiv = document.createElement('div');
   childDiv.setAttribute('id', idChild);
+  childDiv.setAttribute('class', 'calculator-cont');
   const parentDiv = document.getElementById(idParent);
   removeChildren(idParent, remove);
   if(parentDiv) {
