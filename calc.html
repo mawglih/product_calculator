@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="index.css">
-  <script src="index.js"></script>
-  <title>Document</title>
-</head>
-<body>
-  <div id="container-calc" class="calculator-cont">
-    <h2 class="title">Жми давай!</h2>
 
-    <div class="radio-container">
-      <div class="radio1">
-        <h3>Выберите возраст ребёнка</h3>
-        <label for="vozrast">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container-calc" class="calculator-cont">
+        <h2 class="title">Жми давай!</h2>
+
+        <div class="radio-container">
+            <div class="radio1">
+                <h3>Выберите возраст ребёнка</h3>
+                <label for="vozrast">
           <input 
             onclick="createRadio1('radioRow', 'radioRow2', radioRow2)" type="radio"
             name="vozrast"
@@ -22,39 +24,40 @@
           >
           <span class="radioLabel">Возраст 1-2 года</span>
         </label>
-        <label for="vozrast">
+                <label for="vozrast">
           <input 
-            onclick="createRadio('radioRow', 'radioRow1', radioRow1,  createRadio1,'radioRow1', 'radioRow3', radioRow3)" 
+            onclick="createRadio('radioRow', 'radioRow1', radioRow1,  createRadio1,'radioRow', 'radioRow3', radioRow3)" 
             type="radio"
             name="vozrast"
             value=b
           >
           <span class="radioLabel">Возраст 2-3 года</span>
         </label>
-        <label for="vozrast">
+                <label for="vozrast">
           <input 
-            onclick="createRadio('radioRow', 'radioRow1', radioRow1, createRadio1, 'radioRow1', 'radioRow3', radioRow3)" 
+            onclick="createRadio('radioRow', 'radioRow1', radioRow1, createRadio1, 'radioRow', 'radioRow3', radioRow3)" 
             type="radio"
             name="vozrast"
             value=c
           >
           <span class="radioLabel">Возраст 3-4 года</span>
         </label>
-        <label for="vozrast">
+                <label for="vozrast">
           <input 
-            onclick="createRadio('radioRow', 'radioRow1', radioRow1, createRadio1,'radioRow1', 'radioRow3', radioRow3)" 
+            onclick="createRadio('radioRow', 'radioRow1', radioRow1, createRadio1,'radioRow', 'radioRow3', radioRow3)" 
             type="radio"
             name="vozrast"
             value=d
           >
           <span class="radioLabel">Возраст 4-6 лет</span>
         </label>
-      </div>
+            </div>
+        </div>
+
+        <div id="radioRow" class="calculator-cont"></div>
+        <div id="result" class="calculator-cont"></div>
     </div>
-   
-    <div id="radioRow" class="calculator-cont"></div>
-    <div id="result" class="calculator-cont"></div>
-  </div>
 
 </body>
+
 </html>

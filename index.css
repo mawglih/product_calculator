@@ -1,54 +1,69 @@
 /* for calculator */
+
 #result {
-  height: 200px;
-  width: 80vw;
+    height: 200px;
+    width: 80vw;
 }
+
 .calculator-cont {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
-.radio-container, #radioRow{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+
+.calculator-cont-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 }
-.radio1 > h3 {
-  text-align: center;
-  color: red;
+
+.radio1>h3 {
+    text-align: center;
+    color: red;
 }
+
 .radioLabel {
-  color: darkblue;
-  font-weight: bold;
-  font-size: 1.2rem;
+    color: darkblue;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
-#radioRow1 > label {
-  color: darkgreen;
-  font-weight: bold;
-  font-size: 1.3rem;
-  padding-left: 1rem;
+
+#radioRow1>label {
+    color: darkgreen;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding-left: 1rem;
 }
-#radioRow2 > label, #radioRow3 > label {
-  color: darkred;
-  font-weight: bold;
-  font-size: 1.4rem;
-  padding-left: 1rem;
+
+#radioRow2>label,
+#radioRow3>label {
+    color: darkred;
+    font-weight: bold;
+    font-size: 1.4rem;
+    padding-left: 1rem;
 }
-#radioRow1, #radioRow2, #radioRow3 {
-  margin-top: 2rem;
-  align-self: center;
+
+#radioRow1,
+#radioRow2,
+#radioRow3 {
+    margin-top: 2rem;
+    align-self: center;
 }
+
 .result-button {
-  background-color: brown;
-  padding: 20px 40px;
-  font-size: 140%;
-  color: white;
+    background-color: brown;
+    padding: 20px 40px;
+    font-size: 140%;
+    color: white;
 }
+
 .result-button:hover {
-  cursor: pointer;
-  transform: translate(-10px, 10px) scale(1.05);
-  background-color: rgb(170, 27, 27);
+    cursor: pointer;
+    transform: translate(-10px, 10px) scale(1.05);
+    background-color: red;
 }
+
+
 /* end calculator */
