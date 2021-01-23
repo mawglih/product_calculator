@@ -63,9 +63,6 @@ const doMagic = () => {
 };
 
 const getRowCreated = (idParent, idChild, arrayName, title, titleClass, titleId, calculate, remove, fn, id3, id4, array2) => {
-  console.log('id3', id3)
-  console.log('parentId',idParent)
-  console.log('idChild', idChild)
   const parentDiv = document.getElementById(idParent);
   const child = document.getElementById(idChild);
   const childTitle = document.getElementById(titleId);
@@ -121,7 +118,6 @@ const eraseResult = id => {
 
 const removeChildren = (id, remove) => {
     const parentDiv = document.getElementById(id);
-    console.log('parentdiv:', parentDiv);
     if (remove && parentDiv && parentDiv.hasChildNodes()) {
         while (parentDiv.firstChild) {
             parentDiv.removeChild(parentDiv.firstChild);
@@ -141,19 +137,14 @@ const calculateResult = () => {
 };
 
 function createRadio(id1, id2, array, fn, id3, id4, array2) {
-  console.log('clicked');
   removeChildren('result', true);
   removeChildren(id1, true);
   getRowCreated(id1, id2, array, Speach.title, Speach.class, Speach.id, false, true, fn, id3, id4, array2);
 };
 
 function createRadio1(id1, id2, arr) {
-  console.log('clicked1');
   removeChildren('result', true);
   removeChildren(id1, true);
-  console.log('packet', Packet);
-  console.log('packet title', Packet.title);
-  console.log('packet class', Packet.class);
   getRowCreated(id1, id2, arr, Packet.title, Packet.class, Packet.id, true, true);
 };
 // end calculator
