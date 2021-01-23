@@ -141,12 +141,14 @@ const calculateResult = () => {
 };
 
 function createRadio(id1, id2, array, fn, id3, id4, array2) {
+  console.log('clicked');
   removeChildren('result', true);
   removeChildren(id1, true);
   getRowCreated(id1, id2, array, Speach.title, Speach.class, Speach.id, false, true, fn, id3, id4, array2);
 };
 
 function createRadio1(id1, id2, arr) {
+  console.log('clicked1');
   removeChildren('result', true);
   removeChildren(id1, true);
   console.log('packet', Packet);
