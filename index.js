@@ -61,9 +61,6 @@ const doMagic = () => {
 };
 
 const getRowCreated = (idParent, idChild, arrayName, title, titleClass, calculate, remove, fn, id3, id4, array2) => {
-  console.log('id3', id3)
-  console.log('parentId',idParent)
-  console.log('idChild', idChild)
   const parentDiv = document.getElementById(idParent);
   const child = document.getElementById(idChild);
   if (parentDiv.hasChildNodes() && child && idChild === 'radioRow3' && document.getElementById('radioRow1')) {
@@ -93,6 +90,7 @@ const getRowCreated = (idParent, idChild, arrayName, title, titleClass, calculat
               if (result == 'be') {
                   getRowCreated(id3, id4, radioRow2, Packet.title, Packet.class, true, false);
               } else {
+                console.log('clicked3')
                   getRowCreated(id3, id4, array2, Packet.title, Packet.class, true, false);
               }
           });
@@ -134,17 +132,16 @@ const calculateResult = () => {
 };
 
 function createRadio(id1, id2, array, fn, id3, id4, array2) {
+  console.log('clicked');
   removeChildren('result', true);
   removeChildren(id1, true);
-  getRowCreated(id1, id2, array, Speach.title, Speach.class, false, true, fn, id3, id4, array2);
+  getRowCreated(id1, id2, array, Speach.title, Speach.class, false, false, true, fn, id3, id4, array2);
 };
 
 function createRadio1(id1, id2, arr) {
+  console.log('clicked1');
   removeChildren('result', true);
   removeChildren(id1, true);
-  console.log('packet', Packet);
-  console.log('packet title', Packet.title);
-  console.log('packet class', Packet.class);
   getRowCreated(id1, id2, arr, Packet.title, Packet.class, true, true);
 };
 // end calculator
