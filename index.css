@@ -64,6 +64,10 @@
     transform: translate(-10px, 10px) scale(1.05);
     background-color: red;
 }
-
+.title-class {
+  margin-top: 40px;
+  text-align: center;
+  color:darkblue;
+}
 
 /* end calculator */
