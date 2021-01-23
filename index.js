@@ -34,10 +34,12 @@ const radioRow3 = [{ label: 'Бронзовый пакет', value: 'm', name: '
 const Packet = {
   title: 'Выберите пакет, который подходит для ваших целей и бюджета.',
   class: 'title-class',
+  id: 'packet-title',
 };
 const Speach = {
   title: 'Попробуйте определить, соответствует ли речь вашего ребёнка его возрасту? Если затрудняетесь, выбирайте "ДА".',
   class: 'title-class',
+  id: 'speach-title',
 };
 
 const doMagic = () => {
@@ -60,21 +62,26 @@ const doMagic = () => {
     console.log('result is: ', productIds[sum]);
 };
 
-const getRowCreated = (idParent, idChild, arrayName, title, titleClass, calculate, remove, fn, id3, id4, array2) => {
+const getRowCreated = (idParent, idChild, arrayName, title, titleClass, titleId, calculate, remove, fn, id3, id4, array2) => {
   console.log('id3', id3)
   console.log('parentId',idParent)
   console.log('idChild', idChild)
   const parentDiv = document.getElementById(idParent);
   const child = document.getElementById(idChild);
+  const childTitle = document.getElementById(titleId);
   if (parentDiv.hasChildNodes() && child && idChild === 'radioRow3' && document.getElementById('radioRow1')) {
     child.remove();
     removeChildren('result', true);
+  }
+  if (parentDiv.hasChildNodes() && childTitle && titleId === 'packet-title') {
+    childTitle.remove();
   }
   const childDiv = document.createElement('div');
   childDiv.setAttribute('id', idChild);
   childDiv.setAttribute('class', 'calculator-cont-child');
   const childDivTitle = document.createElement('h3');
   childDivTitle.setAttribute('class', titleClass);
+  childDivTitle.setAttribute('id', titleId);
   childDivTitle.innerHTML = title;
   if (parentDiv) {
     parentDiv.appendChild(childDivTitle);
@@ -91,9 +98,9 @@ const getRowCreated = (idParent, idChild, arrayName, title, titleClass, calculat
           inputValue.addEventListener('click', function() {
               let result = calculateResult();
               if (result == 'be') {
-                  getRowCreated(id3, id4, radioRow2, Packet.title, Packet.class, true, false);
+                  getRowCreated(id3, id4, radioRow2, Packet.title, Packet.class, Packet.id, true, false);
               } else {
-                  getRowCreated(id3, id4, array2, Packet.title, Packet.class, true, false);
+                  getRowCreated(id3, id4, array2, Packet.title, Packet.class, Packet.id, true, false);
               }
           });
       }
@@ -136,7 +143,7 @@ const calculateResult = () => {
 function createRadio(id1, id2, array, fn, id3, id4, array2) {
   removeChildren('result', true);
   removeChildren(id1, true);
-  getRowCreated(id1, id2, array, Speach.title, Speach.class, false, true, fn, id3, id4, array2);
+  getRowCreated(id1, id2, array, Speach.title, Speach.class, Speach.id, false, true, fn, id3, id4, array2);
 };
 
 function createRadio1(id1, id2, arr) {
@@ -145,6 +152,6 @@ function createRadio1(id1, id2, arr) {
   console.log('packet', Packet);
   console.log('packet title', Packet.title);
   console.log('packet class', Packet.class);
-  getRowCreated(id1, id2, arr, Packet.title, Packet.class, true, true);
+  getRowCreated(id1, id2, arr, Packet.title, Packet.class, Packet.id, true, true);
 };
 // end calculator
