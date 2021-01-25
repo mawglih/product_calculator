@@ -1,33 +1,4 @@
 // start calculator
-const productIds = {
-    am: 'bronze12',
-    bem: 'bronze12',
-    an: 'silver12',
-    ben: 'silver12',
-    ao: 'gold12',
-    beo: 'gold12',
-    bep: 'no product',
-    bfm: 'bronze23',
-    cem: 'bronze23',
-    bfn: 'silver23',
-    cen: 'silver23',
-    bfo: 'gold23',
-    ceo: 'gold23',
-    bfp: 'platinum23',
-    cep: 'platinum23',
-    cfm: 'bronze34',
-    dem: 'bronze34',
-    cfn: 'silver34',
-    den: 'silver34',
-    cfo: 'gold34',
-    deo: 'gold34',
-    cfp: 'platinum34',
-    dep: 'platinum34',
-    dfm: 'bronze46',
-    dfn: 'silver46',
-    dfo: 'gold46',
-    dfp: 'platinum46'
-};
 const radioRow1 = [{ label: 'НЕТ', value: 'e', name: 'row1' }, { label: 'ДА', value: 'f', name: 'row1' }, ];
 const radioRow2 = [{ label: 'Бронзовый пакет', value: 'm', name: 'row2' }, { label: 'Серебряный пакет', value: 'n', name: 'row2' }, { label: 'Золотой пакет', value: 'o', name: 'row2' }];
 const radioRow3 = [{ label: 'Бронзовый пакет', value: 'm', name: 'row3' }, { label: 'Серебряный пакет', value: 'n', name: 'row3' }, { label: 'Золотой пакет', value: 'o', name: 'row3' }, { label: 'Платиновый пакет', name: 'row3', value: 'p' }, ];
@@ -44,22 +15,35 @@ const Speach = {
 
 const doMagic = () => {
     const result = document.getElementById('result');
-    if(result.hasChildNodes) removeChildren('result',true);
-    const resultTitle = document.createElement('h1');
-    const resultButton = document.createElement('button');
-    const resultLink = document.createElement('a');
+    if(result.hasChildNodes) removeChildren('result', true);
+    const resultTitle = document.createElement('h2');
     resultTitle.setAttribute('class', 'title-class');
     let sum = '';
     sum = calculateResult();
-    resultTitle.innerHTML = 'Пожалуйста, кликните на кнопку внизу, чтобы ознакомиться с вашим выбором.';
-    resultLink.href = `http://vikaraskina.com/product/${productIds[sum]}/`;
-    resultLink.target = '_blank';
-    resultButton.setAttribute('class', 'result-button');
-    resultButton.innerHTML = 'Посмотреть ваш выбор';
+    resultTitle.innerHTML = 'Пожалуйста, посмотрите набор, который мы сгенерировали для вас.';
     result.appendChild(resultTitle);
-    result.appendChild(resultLink);
-    resultLink.appendChild(resultButton);
-    console.log('result is: ', productIds[sum]);
+    const showDiv = document.getElementById(sum);
+    if(showDiv) showDiv.setAttribute('class', 'displayDiv');
+};
+
+const removeActiveClass = () => {
+  const allDivs = document.getElementById('product-list').childNodes;
+  for(let i = 0; i < allDivs.length; i++) {
+    let child = allDivs[i];
+    if(child.nodeType == 1){
+      if(child.classList.contains('displayDiv')) {
+        child.classList.remove('displayDiv');
+        child.setAttribute('class', 'noShow');
+      } else {
+        allDivs.forEach(e => {
+          if(e.nodeType == 1) {
+            e.classList.remove('displayDiv');
+            child.setAttribute('class', 'noShow');
+          }
+        });
+      }
+    }
+  }
 };
 
 const getRowCreated = (idParent, idChild, arrayName, title, titleClass, titleId, calculate, remove, fn, id3, id4, array2) => {
@@ -73,6 +57,7 @@ const getRowCreated = (idParent, idChild, arrayName, title, titleClass, titleId,
   if (parentDiv.hasChildNodes() && childTitle && titleId === 'packet-title') {
     childTitle.remove();
   }
+  removeActiveClass();
   const childDiv = document.createElement('div');
   childDiv.setAttribute('id', idChild);
   childDiv.setAttribute('class', 'calculator-cont-child');
@@ -119,6 +104,7 @@ const eraseResult = id => {
 const removeChildren = (id, remove) => {
     const parentDiv = document.getElementById(id);
     if (remove && parentDiv && parentDiv.hasChildNodes()) {
+      removeActiveClass();
         while (parentDiv.firstChild) {
             parentDiv.removeChild(parentDiv.firstChild);
         }

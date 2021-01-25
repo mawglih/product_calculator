@@ -69,5 +69,18 @@
   text-align: center;
   color:darkblue;
 }
-
+.noShow {
+    display: none;
+}
+.displayDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input-cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
 /* end calculator */
